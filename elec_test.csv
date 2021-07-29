@@ -1,0 +1,101 @@
+race_id,municipality,csd,first_name,last_name,party,votes_received,total_votes,incumbent,elected,acclaimed,gender,election_year,election_date,position,ward,magnitude,source,province,region,pop_2016
+AbercornConseiller de ville0,Abercorn,NA,Denis,St-François,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,4,Quebec Government,Quebec,Quebec,NA
+AbercornConseiller de ville0,Abercorn,NA,Roger,Labrecque,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,4,Quebec Government,Quebec,Quebec,NA
+AbercornConseiller de ville0,Abercorn,NA,Jacques,Guilbault,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,4,Quebec Government,Quebec,Quebec,NA
+AbercornConseiller de ville0,Abercorn,NA,Bernard,Carey,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,4,Quebec Government,Quebec,Quebec,NA
+AbercornConseiller de ville308,Abercorn,NA,Luc,Giguère,,91,370,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,2,Quebec Government,Quebec,Quebec,NA
+AbercornConseiller de ville308,Abercorn,NA,Yvan,Labonté,,94,370,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,2,Quebec Government,Quebec,Quebec,NA
+AbercornConseiller de ville308,Abercorn,NA,William,Murray,,119,370,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,2,Quebec Government,Quebec,Quebec,NA
+AbercornConseiller de ville308,Abercorn,NA,Stéphane,Marcoux,,66,370,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,2,Quebec Government,Quebec,Quebec,NA
+AbercornMairie0,Abercorn,NA,Jean-Charles,Bissonnette,,NA,0,NA,1,1,M,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville1006,Acton Vale,NA,Jean-Yves,Chagnon,,205,397,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville1006,Acton Vale,NA,Jacques,Lampron,,82,397,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville1006,Acton Vale,NA,Diane,Montcalm,,110,397,NA,0,0,F,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville1166,Acton Vale,NA,Claude,Roy,,169,441,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville1166,Acton Vale,NA,Mario,Daudelin,,272,441,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville897,Acton Vale,NA,Benoît,Provost,,49,736,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,2,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville897,Acton Vale,NA,Suzanne,Ledoux,,192,736,NA,1,0,F,2005,"November 6, 2005",Conseiller de ville,,2,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville897,Acton Vale,NA,Raymond,Robertson,,50,736,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,2,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville897,Acton Vale,NA,Patrice,Dumont,,151,736,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,2,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville897,Acton Vale,NA,André,Roy,,178,736,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,2,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville897,Acton Vale,NA,Angèle,Ferland,,116,736,NA,0,0,F,2005,"November 6, 2005",Conseiller de ville,,2,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville965,Acton Vale,NA,Bruno,Lavallée,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+Acton ValeConseiller de ville986,Acton Vale,NA,Yves,Arcouette,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+Acton ValeMairie5917,Acton Vale,NA,Luc,Champagne,,390,2262,NA,0,0,M,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+Acton ValeMairie5917,Acton Vale,NA,Juliette,Dupuis,,1872,2262,NA,1,0,F,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+AdstockConseiller de ville.,Adstock,NA,Gilles,Rousseau,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,3,Quebec Government,Quebec,Quebec,NA
+AdstockConseiller de ville.,Adstock,NA,Renaud,Couture,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,3,Quebec Government,Quebec,Quebec,NA
+AdstockConseiller de ville.,Adstock,NA,Serge,Nadeau,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,3,Quebec Government,Quebec,Quebec,NA
+AdstockConseiller de ville0,Adstock,NA,Christian,Perreault,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AdstockConseiller de ville0,Adstock,NA,Pierre,Quirion,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AdstockConseiller de ville0,Adstock,NA,René,Raby,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AdstockConseiller de ville0,Adstock,NA,Martine,Poulin,,NA,0,NA,1,1,F,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AdstockConseiller de ville0,Adstock,NA,Louis-Jacques,Groleau,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AdstockConseiller de ville0,Adstock,NA,René,Gosselin,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AdstockMairie2336,Adstock,NA,Laurier,Blanchette,,456,1278,NA,0,0,M,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+AdstockMairie2336,Adstock,NA,Hélène,Faucher,,822,1278,NA,1,0,F,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+AguanishConseiller de ville0,Aguanish,NA,Gaston,Blais,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AguanishConseiller de ville0,Aguanish,NA,Hélène,Arseneau,,NA,0,NA,1,1,F,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AguanishConseiller de ville0,Aguanish,NA,Steve,Noël,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AguanishConseiller de ville0,Aguanish,NA,Yvon,Duguay,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AguanishConseiller de ville0,Aguanish,NA,Louiselle,Blais,,NA,0,NA,1,1,F,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AguanishConseiller de ville0,Aguanish,NA,Denis,Rochette,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AguanishMairie0,Aguanish,NA,Richard,Noël,,NA,0,NA,1,1,M,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+AlbanelConseiller de ville0,Albanel,NA,Michel,Lavoie,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,4,Quebec Government,Quebec,Quebec,NA
+AlbanelConseiller de ville0,Albanel,NA,Francine,Chiasson,,NA,0,NA,1,1,F,2005,"November 6, 2005",Conseiller de ville,,4,Quebec Government,Quebec,Quebec,NA
+AlbanelConseiller de ville0,Albanel,NA,Liane,Proulx,,NA,0,NA,1,1,F,2005,"November 6, 2005",Conseiller de ville,,4,Quebec Government,Quebec,Quebec,NA
+AlbanelConseiller de ville0,Albanel,NA,Robin,Harvey,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,4,Quebec Government,Quebec,Quebec,NA
+AlbanelConseiller de ville265,Albanel,NA,Victor,Painchaud,,82,190,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlbanelConseiller de ville265,Albanel,NA,Renel,Gagnon,,108,190,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlbanelConseiller de ville317,Albanel,NA,Alain,Laliberté,,136,214,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlbanelConseiller de ville317,Albanel,NA,Michel,Frigon,,78,214,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlbanelMairie1825,Albanel,NA,Jean-Marc,Mailloux,,469,1024,NA,0,0,M,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+AlbanelMairie1825,Albanel,NA,Évangéline,Plourde,,555,1024,NA,1,0,F,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+AlbertvilleConseiller de ville269,Albertville,NA,Roger,Durette,,161,415,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AlbertvilleConseiller de ville269,Albertville,NA,Gilles,Paquet,,47,415,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AlbertvilleConseiller de ville269,Albertville,NA,Gilberte,Potvin,,NA,415,NA,1,1,F,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AlbertvilleConseiller de ville269,Albertville,NA,Alain,Daigle,,NA,415,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AlbertvilleConseiller de ville269,Albertville,NA,Sylvain,Chabot,,NA,415,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AlbertvilleConseiller de ville269,Albertville,NA,Irenée,Charest,,NA,415,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AlbertvilleConseiller de ville269,Albertville,NA,Mario,Lacasse,,169,415,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AlbertvilleConseiller de ville269,Albertville,NA,Fabien,Raymond,,38,415,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+AlbertvilleMairie269,Albertville,NA,Martin,Landry,,134,211,NA,1,0,M,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+AlbertvilleMairie269,Albertville,NA,Adrien,Pitre,,77,211,NA,0,0,M,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+Alleyn-et-CawoodConseiller de ville0,Alleyn-et-Cawood,NA,Carl,Mayer,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+Alleyn-et-CawoodConseiller de ville0,Alleyn-et-Cawood,NA,Charlene,Scharf-Lafleur,,NA,0,NA,1,1,F,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+Alleyn-et-CawoodConseiller de ville0,Alleyn-et-Cawood,NA,Michel,Chartrand,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+Alleyn-et-CawoodConseiller de ville0,Alleyn-et-Cawood,NA,Allen,Peck,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+Alleyn-et-CawoodConseiller de ville0,Alleyn-et-Cawood,NA,Ricky,Lafleur,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+Alleyn-et-CawoodConseiller de ville0,Alleyn-et-Cawood,NA,Gérald,Stevenson,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,6,Quebec Government,Quebec,Quebec,NA
+Alleyn-et-CawoodMairie0,Alleyn-et-Cawood,NA,Joseph,Squitti,,NA,0,NA,1,1,M,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville2653,Alma,NA,Yves,Vachon,,701,1529,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville2653,Alma,NA,Pascal,Pilote,,828,1529,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville2767,Alma,NA,Sylvie,Beaumont,,NA,0,NA,1,1,F,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville2838,Alma,NA,Frédéric,Tremblay,,944,1400,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville2838,Alma,NA,Francine,Marcoux,,456,1400,NA,0,0,F,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville2918,Alma,NA,Christiane,Cloutier,,585,1640,NA,0,0,F,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville2918,Alma,NA,Marc,Asselin,,1055,1640,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville2975,Alma,NA,Jean-Rock,Pedneault,,1213,1910,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville2975,Alma,NA,Serge,Tremblay,,697,1910,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville2996,Alma,NA,Claude,Garneau,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville3028,Alma,NA,Lucien,Boily,,NA,0,NA,1,1,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville3436,Alma,NA,André,Levesque,,890,2071,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaConseiller de ville3436,Alma,NA,Jocelyn,Fradette,,1181,2071,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AlmaMairie23611,Alma,NA,Gérald,Scullion,,7603,13036,NA,1,0,M,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+AlmaMairie23611,Alma,NA,Lucille,Gagnon,,5433,13036,NA,0,0,F,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville201,Amherst,NA,Gérard,Boyer,,46,125,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville201,Amherst,NA,Ronald,Robitaille,,79,125,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville228,Amherst,NA,Claude,Lecours,,57,136,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville228,Amherst,NA,Gaston,Beaulieu,,79,136,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville245,Amherst,NA,Annette,Gravel Chalifoux,,26,120,NA,0,0,F,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville245,Amherst,NA,Daniel,Lampron,,94,120,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville265,Amherst,NA,Luce,Lavigne,,72,141,NA,1,0,F,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville265,Amherst,NA,Sylvie,Paquette,,43,141,NA,0,0,F,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville265,Amherst,NA,Richard,Lavoie,,26,141,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville269,Amherst,NA,Vincent,Dumouchel,,70,163,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville269,Amherst,NA,Louis,Turmel,,93,163,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville296,Amherst,NA,Gilles,Longtin,,62,212,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville296,Amherst,NA,Yves,Duval,,137,212,NA,1,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstConseiller de ville296,Amherst,NA,Paul-Émile,Galarneau,,13,212,NA,0,0,M,2005,"November 6, 2005",Conseiller de ville,,1,Quebec Government,Quebec,Quebec,NA
+AmherstMairie1504,Amherst,NA,Bernard,Lapointe,,494,890,NA,1,0,M,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
+AmherstMairie1504,Amherst,NA,Marcel,Dubois,,396,890,NA,0,0,M,2005,"November 6, 2005",Mairie,,1,Quebec Government,Quebec,Quebec,NA
