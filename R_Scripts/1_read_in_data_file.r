@@ -17,7 +17,7 @@ library(tidyverse)
 library(tidylog)
 library(here)
 #This reads in the newspaper file
-elections<-read_xlsx(path=here("working_data_file.xlsx"))
+elections<-read_xlsx(path=here("Data", "working_data_file.xlsx"))
 
 #Set variables to be numeric
 elections$turnout<-as.numeric(elections$turnout)
@@ -121,14 +121,6 @@ elections %>%   group_by(treatment) %>%
 
 
 
-#Shyow distribution of variables
-
-elections%>% 
-pivot_longer(cols=c(status, turnout, `number of candidates`, margin_percent)) %>% 
-  ggplot(., aes(x=value))+geom_histogram()+facet_grid(~name, scales="free_x")
-elections %>% 
-  filter(na==3) %>% 
-  View()
 
 #### Make Treatment Variable ####
 elections %>% 
@@ -165,3 +157,86 @@ elections %>%
 #-1 equals 1 ewspaper has closed
 #-2 equals 2, etc. etc. 
 table(elections$year, elections$status)
+
+
+#### Shyow distribution of variables ####
+
+elections%>% 
+  pivot_longer(cols=c(status, turnout, `number of candidates`, margin_percent)) %>% 
+  ggplot(., aes(x=value))+geom_histogram()+facet_grid(~name, scales="free_x")
+ggsave(here("Plots", "distribution_of_variables.png"), width=8, height=4)
+#Detect outlier with 6 newspaper closures, it is the city of Montreal. 
+elections %>% 
+  filter(status< -5) 
+  
+#### Try two-way fixed effects #### 
+names(elections)
+turnout<-lm(turnout~treatment+as.factor(year)+as.factor(municipality), data=elections)
+summary(model1)
+margin<-lm(margin_percent~treatment+as.factor(year)+as.factor(municipality), data=elections)
+summary(model2)
+candidates<-lm(`number of candidates`~treatment+as.factor(year)+as.factor(municipality), data=elections)
+
+library(stargazer)
+stargazer(turnout, margin, candidates, type="html", out=here("Tables", "model1_model3.html"), omit=c('^as.factor'))
+turnout
+qplot(1:length(turnout$residuals),turnout$residuals,  geom="point")
+qplot(1:length(margin$residuals),margin$residuals,  geom="point")
+qplot(1:length(candidates$residuals),candidates$residuals,  geom="point")
+
+qplot(turnout$fitted.values, turnout$resid, main="Residuals and fitted values for Turnout")
+ggsave(here("Plots", "residuals_fitted_values_turnout.png"))
+qplot(margin$fitted.values, margin$resid, main="Residuals and fitted values for Margin Percent")
+ggsave(here("Plots", "residuals_fitted_values_margins.png"))
+qplot(candidates$fitted.values, candidates$resid, main="Residuals and fitted values for N candidates")
+ggsave(here("Plots", "residuals_fitted_values_turnout.png"))
+
+
+qqnorm(turnout$resid, main="QQ Plot for Turnout")  #Normal Quantile to Quantile plot
+qqline(turnout$resid) 
+ggsave(here("Plots", "qqnorm_turnout_full.png"))
+qqnorm(margin$resid, main="QQPlot for Margin")  #Normal Quantile to Quantile plot
+qqline(margin$resid) 
+ggsave(here("Plots", "qqnorm_turnout_full.png"))
+
+qqnorm(candidates$resid, main="QQPlot for candidates")  #Normal Quantile to Quantile plot
+qqline(candidates$resid) 
+ggsave(here("Plots", "qqnorm_candidates_full.png"))
+
+#Filter out huge numbers of newspaper closures and largenumbers of candidatets
+elections %>% 
+  filter(status > -6 & `number of candidates` <20)->elections2
+turnout2<-lm(turnout~treatment+as.factor(year)+as.factor(municipality), data=elections2)
+summary(turnout2)
+margin2<-lm(margin_percent~treatment+as.factor(year)+as.factor(municipality), subset(elections2, margin_percent<2))
+summary(margin2)
+candidates2<-lm(`number of candidates`~treatment+as.factor(year)+as.factor(municipality), data=elections2)
+summary(candidates2)
+summary(turnout2)
+summary(margin2)
+summary(candidates)
+#Filter out margins
+#Check residuals of 
+
+qplot(turnout2$fitted.values, turnout2$resid, main="Residuals and fitted values for Turnout 2\n Subsetted data on closures and candidates")
+
+ggsave(here("Plots", "residuals_fitted_values_turnout_subsetted.png"))
+qplot(margin2$fitted.values, margin2$resid, main="Residuals and fitted values for Margin Percent\nSubsetted data on closures, candidates and margin <2")
+ggsave(here("Plots", "residuals_fitted_values_margins_subsetted.png"))
+qplot(candidates2$fitted.values, candidates2$resid, main="Residuals and fitted values for N candidates\nSubsetted data on closures, candidates and margin <2")
+ggsave(here("Plots", "residuals_fitted_values_turnout_subsetted.png"))
+
+
+qqnorm(turnout2$resid, main="QQ Plot for Turnout Subsetted")  #Normal Quantile to Quantile plot
+qqline(turnout2$resid) 
+ggsave(here("Plots", "qqnorm_turnout_subsetted.png"))
+qqnorm(margin2$resid, main="QQPlot for Margin Subsetted")  #Normal Quantile to Quantile plot
+qqline(margin2$resid) 
+ggsave(here("Plots", "qqnorm_turnout_subsetted.png"))
+
+qqnorm(candidates2$resid, main="QQPlot for candidates Subsetted")  #Normal Quantile to Quantile plot
+qqline(candidates$resid) 
+ggsave(here("Plots", "qqnorm_candidates_subsetted.png"))
+
+stargazer(turnout, turnout2, margin, margin2, candidates, candidates2, omit=c("^as.factor"), out=here("Tables", "model1_model3.html"))
+
