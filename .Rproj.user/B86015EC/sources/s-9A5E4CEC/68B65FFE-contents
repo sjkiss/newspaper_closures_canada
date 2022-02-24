@@ -1,0 +1,17 @@
+set.seed(1234)
+city<-letters[1:20]
+year<-c(2004,2008, 2011, 2016, 2021)
+df<-expand.grid(city=city, year=year)
+treatment_indices<-sample(1:nrow(df), size=50, replace=F)
+
+df$treatment<-rep(0,nrow(df))
+df$treatment %in% treatment_indices
+
+df$treatment<-ifelse(row.names(df) %in% treatment_indices, 1, 0)
+df %>% 
+  arrange(city, year)
+df %>% 
+  filter(city=='a')
+arrange(closure) %>% 
+  mutate(closure_count= row_number(), 
+         first_closure = closure & closure_count==1)

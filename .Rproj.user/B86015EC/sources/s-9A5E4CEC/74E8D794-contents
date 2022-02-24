@@ -1,0 +1,2 @@
+var1<-c(rep("A", 3), rep("B", 3), rep("C", 3))
+var2<-sample(seq(2003,2012, 1), size=length(var1))

@@ -1,0 +1,12 @@
+####Load libraries####
+library(tidyverse)
+library(haven)
+#This is the command to read in a stata file:
+#Notethe file file="" must specify exactly where the file is. 
+elec<-read_dta(file="elec.dta")
+#
+##Look up different ways of exporting characters with accents
+## key is encodings. Try utf-8 encoding in your searches?
+## This is tricky and often trial and error is the best way 
+## rio package
+## openxlsx package

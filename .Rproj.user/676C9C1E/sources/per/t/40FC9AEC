@@ -1,0 +1,32 @@
+{
+    "id": "40FC9AEC",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1602792221462.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "expression": "elec",
+        "caption": "elec",
+        "totalObservations": "93695",
+        "displayedObservations": "93695",
+        "variables": "21",
+        "cacheKey": "95BF9367",
+        "object": "elec",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=elec&cache_key=95BF9367&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 140315113710912,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1602792221462,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1602688778455.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7ED7DD17",
+    "lastKnownWriteTime" : 7287451066594978163,
+    "last_content_update" : 1602688778455,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "33428DEA",
+        "caption" : "elec",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=elec&cache_key=33428DEA",
+        "displayedObservations" : 93695,
+        "environment" : "",
+        "expression" : "elec",
+        "object" : "elec",
+        "preview" : 0,
+        "totalObservations" : 93695,
+        "variables" : 21
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

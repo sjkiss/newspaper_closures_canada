@@ -1,0 +1,7 @@
+install.packages('did')
+library(did)
+data(mpdata)
+data(mpdta)
+head(mpdta)
+head(elections)
+View(elections)
