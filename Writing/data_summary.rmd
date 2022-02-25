@@ -1,0 +1,79 @@
+---
+title: "Summary of Newspaper Closure Dataset"
+author: "Simon J. KIss"
+date: "19/05/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE, echo=F, results="hide", message=F, warning=F}
+knitr::opts_chunk$set(echo=F, results="hide", message=F, warning=F)
+library(readxl)
+library(tidyverse)
+library(knitr)
+```
+
+## R Markdown
+
+```{r data-prep}
+source("1_read_in_data_file.r")
+```
+
+This is how the data-set is structured right now. 
+
+```{r shgow-data, results="asis"}
+elections%>% 
+head(20) %>% 
+  select(-`newspaper desert`) %>% 
+    kable(., digits=2) 
+
+```
+
+Right now we have data on `r length(unique(elections$municipality))` municipalities. They come from a basically a combined public data-set that has tracked newspaper closures and a data-set of historic election results. There's a big range of municipalities in here, from large metropolises to rural townships, so I'm going to guess we'll want to include some kind of control for population size. 
+
+```{r show-summary, results="asis", eval=F}
+options(digits=2)
+library(knitr)
+names(elections)
+elections %>% 
+  select(-n, -acclaimed, -`newspaper desert`) %>% 
+summary(.) %>% 
+  kable()
+
+
+```
+
+WE have three dependent variables:
+
+1. Margin of Victory (Percent)
+2. Turnout (percent)
+3. Number of mayoral candidates. 
+
+We have mixed data on each. For example, we have `r elections %>% filter(na==0) %>% nrow()` election-year combinations where we have all three dependent variables, `r elections %>% filter(na<2) %>% nrow()` where we have two dependent variables and `r elections %>% filter(na<3) %>% nrow()` where we have one dependent variable. 
+
+In terms of newspaper closures, we have set up the data where each municipality enters the data-set with a value of 0, and then receives a -1 each time we have a record of a newspaper closure before that election-year. Once it has suffered a newspaper closure, that score stays with it through the data-set, so the treatment is I guess hypothesized to have lasting effects. If another newspaper is closed, then the score goes down by one again. So with this, we can quickly define a dichotomous variable 0 or 1 whether a municipality in a year has had a newspaper closure, or we can try to model the effects linearly. 
+
+The treatment is distributed as follows:
+
+
+```{r show-treatment-distribution}
+
+elections %>%   group_by(treatment) %>% 
+  summarize(n=n()) %>%
+  kable(.)
+
+```
+
+The treatment and dependent variables are distributed as follows. So there are some weird outliers here. For example, one municipality has 6 newspaper closures recorded; one municipality had like 40 candidates for mayor But those can be dealt with, although that will then reduce sample size a bit. 
+```{r show-variable-plot, include=T}
+elections %>% 
+pivot_longer(cols=c(status, turnout, `number of candidates`, margin_percent)) %>% 
+  ggplot(., aes(x=value))+geom_histogram()+facet_grid(~name, scales="free_x")
+
+```
+
+So, I am wondering three things now. First of all, is our sample size roughly big enough to pick up an effect? Second, what do I need to do next to structure the data-set? Do I need to calculate the change in turnout, nuumber of candidates and margin percent for each election year i.e. there will be missing values for the first row for each municipality? Third, how do actually regress this in R? 
+
+Lastly, we intend to go further and get some demographic data to add to this data-set. Specifically we are thinking getting change in population size for each census sub-division, change in share of degree holders, maybe change in unemployment rate and maybe chane in income. Does all that sound good?
+
+
+
