@@ -8,7 +8,9 @@ summary(elections)
 names(elections)
 glimpse(elections)
 
-did_turnout<-att_gt(yname="turnout", tname="year", idname="CSD.code", gname="group_name", data=elections)
+did_turnout<-att_gt(yname="Turnout", tname="year", idname="CSD.code", gname="period", 
+                    data=subset(elections, is.na(Turnout)==F))
+did_turnout<-att_gt(yname="Turnout", tname="year", idname="CSD.code", gname="period", data=elections)
 
 #checks
 class(elections$CSD.code)
