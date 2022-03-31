@@ -7,10 +7,10 @@ elections<-read.csv(here("Data/elections_help.csv"))
 summary(elections)
 names(elections)
 glimpse(elections)
-
-did_turnout<-att_gt(yname="Turnout", tname="year", idname="CSD.code", gname="period", 
-                    data=subset(elections, is.na(Turnout)==F))
-did_turnout<-att_gt(yname="Turnout", tname="year", idname="CSD.code", gname="period", data=elections)
+names(elections)
+did_turnout<-att_gt(yname="turnout", tname="year", idname="CSD.code", gname="period", 
+                    data=subset(elections, is.na(turnout)==F))
+did_turnout<-att_gt(yname="turnout", tname="year", idname="CSD.code", gname="period", data=elections)
 
 #checks
 class(elections$CSD.code)
