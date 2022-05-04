@@ -59,14 +59,47 @@ elections %>%
 elections %>% 
   filter(municipality=="Rouyn-Noranda") %>% View()
 #
-#Assume a newspaper closed in Moose Jaw in 2010
+#### Daily Newspaper Closures 
 elections %>% 
-  mutate(community_weekly_newspaper_closed=case_when(
+  mutate(daily_newspaper_closed=case_when(
+    # municipality=="Sainte-Marie" & election_year > 2014 ~ 1,
+    # municipality=="Rouyn-Noranda" & election_year > 2014 ~ 1,
+    # municipality=="Selkirk" &election_year> 2020 ~1,
+    municipality=="Chilliwack" &election_year> 2016 ~1,
+    TRUE ~ 0
+  ))->elections
+
+#### Community weekly daily free Newspaper Closures ####
+elections %>% 
+  mutate(community_weekly_daily_free_newspaper_closed=case_when(
     municipality=="Sainte-Marie" & election_year > 2014 ~ 1,
     municipality=="Rouyn-Noranda" & election_year > 2014 ~ 1,
     municipality=="Selkirk" &election_year> 2020 ~1,
+    municipality=="Abbotsford" &election_year> 2013 ~ 2
+    municipality=="Chilliwack" &election_year> 2013 ~ 1
     TRUE ~ 0
   ))->elections
+
+#### Daily newspaper Service Reductions ####
+elections %>% 
+  mutate(daily_newspaper_reduced_service=case_when(
+    # municipality=="Sainte-Marie" & election_year > 2014 ~ 1,
+    # municipality=="Rouyn-Noranda" & election_year > 2014 ~ 1,
+    # municipality=="Selkirk" &election_year> 2020 ~1,
+    # TRUE ~ 0
+  ))->elections
+
+#### Community and Weekly newspaper Service Reductions ####
+elections %>% 
+  mutate(community_weekly_newspaper_reduced_service=case_when(
+    # municipality=="Sainte-Marie" & election_year > 2014 ~ 1,
+    # municipality=="Rouyn-Noranda" & election_year > 2014 ~ 1,
+    # municipality=="Selkirk" &election_year> 2020 ~1,
+    # TRUE ~ 0
+    municipality=="Yarmouth" > election_year> 2016 ~ 1,
+    municipality=="Digby" > election_year> 2016 ~ 1
+  ))->elections
+
 
 elections %>% 
   filter(str_detect(municipality, "Sainte-Marie| Rouyn")) %>% 
@@ -76,4 +109,5 @@ elections %>%
   filter(municipality=="Moose Jaw" & election_year> 2009) %>% 
   select(municipality, election_year, newspaper_closed)
 
-View(elections)
+#View(elections)
+#write_csv(elections, file="data/canadian_municipal_elections.csv")
