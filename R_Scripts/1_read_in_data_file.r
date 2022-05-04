@@ -18,7 +18,10 @@ library(tidylog)
 library(here)
 #This reads in the newspaper file
 elections<-read_xlsx(path=here("Data", "working_data_file.xlsx"))
-
+# This reads in the complete data-set 
+local_news<-read.csv(file=here("Data/October-1-2021-raw-data.csv"))
+local_news$title
+Encoding(local_news$title)<-'utf8'
 #Call the code to add in the Statistics Canada data
 #source(here("R_Scripts/2_download_census_data.R"))
 #Set variables to be numeric
@@ -46,11 +49,11 @@ elections %>%
   group_by(municipality, year) %>% 
   #Arrange the data by province, then city then year, moving from largest vote-getter (e.g. the winner), to the least
   arrange(province, municipality, year, desc(Votes), by_group=T) %>% 
-  mutate(place=row_number()) %>% 
+  mutate(place=row_number()) %>%
   #calculate the margin as a function of Votes minus the next votegetter in the group (e.g. the second-place candidate)
-mutate(margin=Votes-lead(Votes),
+mutate(margin=Votes-dplyr::lead(Votes),
        #convert to a percent
-       margin_percent=margin/Total_votes) ->elections
+       margin_percent=(margin/Total_votes)*100) ->elections
 
 elections %>% 
   filter(place==1) ->elections
@@ -65,23 +68,34 @@ names(elections)
 #          delta_margin=margin_percent-lag(margin_percent), 
 #          delta_n=`number of candidates`-lag(`number of candidates`)) ->elections
 
-#Identify the first closure
-elections %>%
-  group_by(municipality, closure= status<0) %>% 
-  arrange(closure) %>% 
-  mutate(closure_count= row_number(), 
-         first_closure = closure & closure_count==1) ->elections
-
+#### Create treatment variable for distinguishing between which cities have a newspaper closure at all and which do not. 
 
 
 elections %>% 
+  mutate(treatment=case_when(
+    status<0 ~ 1,
+    status==0 ~ 0
+  ))->elections
+#### Identify the first closure
+elections %>%
+  group_by(municipality, closure= status<0) %>% 
+  mutate(closure_count= row_number(), 
+         first_closure = closure & closure_count==1) ->elections
+elections$first_closure<-as.numeric(as.logical(elections$first_closure))
+
+elections %>% 
+  arrange(municipality, year) %>% 
   group_by(municipality) %>% 
-  mutate(group_name=match(TRUE, first_closure)) %>% 
-mutate(group_name=car::Recode(group_name, "NA=0")) ->elections
-
-
+  slice(match(1, treatment)) %>% ungroup() %>% 
+mutate(period=year) %>% 
+  select(municipality, year, period, treatment) %>% 
+  right_join(., elections, by=c("municipality", "year", "treatment")) %>% 
+  group_by(municipality) %>% 
+  fill(period, .direction="downup") %>% 
+  arrange(municipality, year) ->elections
+elections$period<-ifelse(is.na(elections$period), 0, elections$period)
 #calculate the previous margin of victory
-names(elections)
+
 # elections %>% 
 #   group_by(municipality) %>% 
 #   mutate(previous_margin=lag(margin_percent)) ->elections
@@ -137,15 +151,6 @@ elections %>%
   nrow()
 #542 election years with at least 1 DV
 
-
-
-
-elections %>%   group_by(treatment) %>% 
-  summarize(n=n())
-# 82 post-treatment election-years, 471 non-treatment election-years
-#How many election years prior to the treatment
-
-
 #Assign To Treatment Group
 #This assigns 1 to any city-year where a newspaper has been closed
 elections %>% 
@@ -154,7 +159,8 @@ elections %>%
     sum(status)==0 ~ 0,
     sum(status)<0 ~1
   ))->elections
-.
+library(labelled)
+val_labels(elections$treat_group)<-c("Untreated"=0, "Treated"=1)
 
 #This tries to add a time variable t with 0 for the year a newspaper closes, and then -1 for the year before, and +1 for the year after; But by definition all untreated cities will then have a 0 all years
 elections %>% 
@@ -177,23 +183,12 @@ table(elections$year, elections$status)
 elections%>% 
   pivot_longer(cols=c(status, turnout, `number of candidates`, margin_percent)) %>% 
   ggplot(., aes(x=value))+geom_histogram()+facet_grid(~name, scales="free_x")
-ggsave(here("Plots", "distribution_of_variables.png"), width=8, height=4)
+#ggsave(here("Plots", "distribution_of_variables.png"), width=8, height=4)
 
 #Detect outlier with 6 newspaper closures, it is the city of Montreal. 
 elections %>% 
   filter(status< -5) 
 elections<-ungroup(elections)
 
-#### Write Out Descriptives ####
-#install.packages("DescTools")
-
 elections %>% 
-  select(municipality) %>% 
-  tbl_summary(statistic=municipality~"{N}") 
-
-length(unique(elections$municipality))
-
-elections %>% 
-  filter(municipality=="Saskatoon")
-
-write.csv(elections, file=here("data/elections_help.csv"))
+  filter(municipality=="Halifax")

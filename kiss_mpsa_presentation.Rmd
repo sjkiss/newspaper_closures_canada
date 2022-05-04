@@ -1,0 +1,244 @@
+---
+title: "Newspaper Closures in Canada are Not Linked to Municipal Turnout, Mayoral Margin of Victor or the Number of Mayoral Candidates"
+author: "Simon J. Kiss"
+date: "06/04/2022"
+output: beamer_presentation
+bibliography: /Users/skiss/OneDrive - Wilfrid Laurier University/projects_folder/News_deserts/newspapers.bib
+---
+
+```{r setup, include=FALSE}
+options("modelsummary_format_numeric_latex" = "plain")
+knitr::opts_chunk$set(echo = FALSE, results="asis", warning=F, message=F, fig.align="center")
+library(knitr)
+library(kableExtra)
+library(janitor)
+library(stringr)
+```
+
+
+
+```{r run-background-script, include=F}
+source("R_Scripts/3_analysis.R")
+theme_set(theme_minimal())
+elections%>% 
+    rename(Closures=status, Turnout=turnout, n_candidates=`number of candidates`, margin=margin_percent) ->elections
+```
+
+
+## The Data
+
+[Local News Project](/Users/skiss/OneDrive - Wilfrid Laurier University/projects_folder/News_deserts/Images/Screen Shot 2022-04-07 at 9.46.29 AM.png)
+
+```{r local-news, out.height="2in", out.width="2in", fig.align="center"}
+knitr::include_graphics(path="/Users/skiss/OneDrive - Wilfrid Laurier University/projects_folder/News_deserts/Images/Screen Shot 2022-04-07 at 9.46.29 AM.png")
+
+```
+
+- Crowd-sourced information on media transitions
+- Active monitoring
+- Partial validation by comparison with [News Media Canada](https://nmc-mic.ca/)
+
+
+## The Data
+
+```{r table1}
+
+local_news %>%
+  mutate(Media=case_when(
+    str_detect(Media.Type, "paper") ~ "Newspaper",
+        str_detect(Media.Type, "radio") ~ "Broadcast",
+        str_detect(Media.Type, "TV") ~ "Broadcast",
+      str_detect(Media.Type, "online") ~ "Online",
+  )) %>%
+  mutate(Closure=case_when(
+    Transition.Type=="closed"~"Closure",
+        Transition.Type=="new"~"No Closure",
+        Transition.Type=="closed due to merger"~"Closure",
+        Transition.Type=="decrease in service"~"No Closure",
+        Transition.Type=="new outlet produced by merger"~"No Closure",
+            Transition.Type=="shifted to online"~"No Closure",
+    Transition.Type=="increase in service"~"No Closure",
+    Transition.Type=="daily becomes a community paper"~"No Closure",
+    Transition.Type=="daily (free) becomes a community paper"~"No Closure",
+  )) %>%
+  mutate(Transition.Type=str_to_sentence(Transition.Type))->local_news
+tabyl(local_news, Transition.Type,Closure ) %>%
+ # adorn_totals(c("col")) %>%
+  adorn_percentages(., "all") %>%
+  adorn_pct_formatting() %>%
+  adorn_ns() %>%
+ # arrange(desc(Closure), desc(n)) %>%
+  clean_names(., case="title") %>%
+  kable(.,  caption="Local media transition types in the Local News Project original dataset", format="latex")%>% kable_styling(latex_options="scale_down")
+
+
+```
+
+## The Data
+
+```{r table-closures-2}
+tabyl(local_news, Transition.Type, Media) %>% 
+  adorn_percentages(c("all")) %>% 
+  adorn_pct_formatting() %>% 
+  adorn_ns() %>% 
+  kable(., caption="Local media closures by type of medium in the original dataset.", format="latex")%>% kable_styling(latex_options="scale_down")
+
+```
+## The Challenges
+
+1. Are declines in local news supply by newspapers being offset by increases in news supply from digital and broadcast?
+2. How do you link a newspaper to a municipality?
+3. How do you treat marginal newspapers? 
+
+## The Solutions
+
+1. Count only explicitly closures of newspapers (dailies and community e.g. weeklies)
+2. Find municipal election results for: mayoral margin of victory, turnout, and number of mayoral candidates back to 2001. 
+3. Supplement with a database of municipal election results that cover roughly the same time period of Canada's 100 largest cities [@breuxTurnoutLocalElections2017]. 
+4. Track down missing gaps through provincial databases and contacting municipalities.
+
+
+## The Data
+
+- `r length(unique(elections$municipality))` unique municipalities
+
+```{r show-elections}
+elections %>% 
+  group_by(municipality) %>% 
+  summarize(n=n()) %>% 
+  group_by(as.factor(n)) %>% 
+  summarize(n=n()) %>% 
+  rename("Elections"=1, "Cities"=2) ->elections_df
+elections_df %>% 
+  kable(., caption="Distribution of number of elections and municipalities.")
+
+```
+
+## The Data
+```{r show-descriptives, echo=F, eval=T, results="asis"}
+library(modelsummary)
+missings<-function(x) {
+sum(is.na(x))
+}
+
+elections %>% 
+  group_by(municipality) %>% 
+  summarize(N=n()) %>% 
+  summarize(Average=mean(N))->n_elections
+elections %>%  
+  select(Year=year, Margin=margin, Turnout, n_candidates, Closures) %>% 
+  mutate(Closures=Closures*-1) %>% 
+datasummary(Margin+n_candidates+Turnout+Closures~ N+Mean+SD+Min+Max+missings, data=., output="markdown", col.names=c("Test", "Mean", "SD","Missing Values"), caption="Descriptive statistics for key numeric variables.", digits=0) %>% kable_styling(latex_options="scale_down") 
+
+```
+## The Data
+
+```{r scatterplot-matrix, fig.width=3, fig.height=3, fig.cap="Correlation of dependent variables", fig.align="center"}
+#install.packages('GGally')
+library(GGally)
+
+ggpairs(elections, columns=c(10,11,16), lower = list(continuous = wrap("smooth", color="lightgrey")))
+
+
+```
+
+## The Results
+
+```{r show-first-15, eval=T}
+
+library(lubridate)
+
+elections$Year<-ymd(as.character(elections$year), truncated=2L)
+
+elections %>% 
+  select(Year=year, municipality, Closures, `First Post-Closure`=first_closure, `All Post-Closure`=treatment, Turnout, n_candidates, Margin=margin) %>%
+slice(1:15) %>% kable(., caption="First 15 rows of the dataset and key variables", format="latex")%>% kable_styling(latex_options="scale_down") 
+
+
+```
+## The Results
+
+```{r averages1, results='asis' }
+library(kableExtra)
+library(janitor)
+
+
+elections %>% 
+select(year, municipality, treatment,first_closure,margin, Turnout, n_candidates) %>% 
+  pivot_longer(3:4, names_to=c("Treatment Type"), values_to=c("Group")) %>% 
+  pivot_longer(3:5, names_to=c("Outcome"), values_to=c("Measure")) %>%
+  group_by(`Treatment Type`, Group, Outcome) %>% 
+  summarize(Average=mean(Measure, na.rm=T)) %>% 
+  pivot_wider(names_from=Outcome,values_from=Average) %>% 
+  ungroup() %>% 
+  mutate(`Treatment Type`=recode(`Treatment Type`, "first_closure"="Short-Term", "treatment"="Long-Term")) %>% 
+rename(Group=2, `Margin Percent`=3, `Number of Candidates`=4, `Turnout`=5) %>% 
+  mutate(Group=car::Recode(Group, "0='Untreated' ; 1='Treated'")) %>% 
+  mutate(`Turnout`=`Turnout`/100, `Margin Percent`=`Margin Percent`/100) %>% 
+adorn_pct_formatting(,,,c(3,5)) %>% 
+  kable(., digits=1, caption="Average measures of local electoral participation by treatment group. The first two rows define a treated year as only being the first election following a newspaper closure. This table reports averages from the full data-set.", format="latex") %>% kable_styling(latex_options="scale_down")
+```
+
+## Two-Way Fixed Effects Model
+
+```{r model1-long-term, echo=F, eval=T, results="markup"}
+library(plm)
+plm_turnout1<-plm(Turnout~treatment, index=c('municipality', 'year'), data=elections, effect="twoways")
+plm_candidates1<-plm(log(n_candidates)~treatment, index=c('municipality', 'year'), data=elections, effect="twoways")
+plm_margin1<-plm(margin~treatment, index=c('municipality', 'year'), data=elections, effect="twoways")
+plm_turnout2<-plm(Turnout~first_closure, index=c('municipality', 'year'), data=elections, effect="twoways")
+
+plm_candidates2<-plm(log(n_candidates)~first_closure, index=c('municipality', 'year'), data=elections, effect="twoways")
+plm_margin2<-plm(log(margin)~first_closure, index=c('municipality', 'year'), data=elections, effect="twoways")
+library(modelsummary)
+model.list1<-list(plm_turnout1, plm_candidates1, plm_margin1, plm_turnout2, plm_candidates2, plm_margin2)
+names(model.list1)<-c("Turnout", "log(Candidates)", "log(Margin)", "Turnout", "log(Candidates)", "log(Margin)")
+
+
+msummary(model.list1[1:3], stars=T, vcov = function(x) vcovBK(x, type=c("HC1"), cluster="time"), fmt=2, coef_rename=c("treatment"="Treatment"),  title="Two-Way fixed effects model of newspaper closures on three measures of local participation (Long-Term).", output='latex', notes="Standard errors are panel-corrected standard errors (Beck and Katz 1995)") %>%  kable_styling(latex_options="scale_down") 
+
+
+
+```
+
+## Two-Way Fixed Effects Model
+
+```{r model1-short-term, eval=T,results="asis"}
+msummary(model.list1[4:6], stars=T, vcov = function(x) vcovBK(x, type=c("HC1"), cluster="time"), fmt=2, coef_rename=c("first_closure"="Treatment"),  title="Two-Way fixed effects model of newspaper closures on three measures of local participation (Short-Term)", output='latex', notes="Standard errors are panel-corrected standard errors (Beck and Katz 1995).") %>% kable_styling(latex_options="scale_down")
+
+```
+
+
+## Two-Way Fixed Effects Model
+
+```{r model3, eval=T, echo=F}
+
+plm_turnout4<-plm(Turnout~treatment+log(margin)+log(n_candidates)+treatment:log(margin)+treatment:log(n_candidates), index=c('municipality', 'year'), effect="twoways", data=elections)
+plm_turnout5<-plm(Turnout~first_closure+log(margin)+log(n_candidates)+first_closure:log(margin)+first_closure:log(n_candidates), index=c('municipality', 'year'), effect="twoways",data=elections)
+model.list3<-list(plm_turnout4, plm_turnout5)
+names(model.list3)<-c("Short Term", "Long Term")
+coef_vec<-c("treatment"="Treatment","first_closure"="Treatment",
+            "first_closure:log(margin)"="Treatment x log(Margin)",
+             "first_closure:log(n_candidates)"="Treatment x log(n_candidates)",
+            "treatment:log(margin)"="Treatment x log(Margin)",
+            "treatment:log(n_candidates)"="Treatment x log(n_candidates)")
+msummary(model.list3, data=elections, stars=T, vcov = function(x) vcovBK(x, type=c("HC1"), cluster="time"), coef_map=coef_vec, output='latex',  title="Two-Way fixed effects model of interaction between newspaper closers, mayoral margin of victory and number of candidates on turnout.") %>% kable_styling(latex_options="scale_down")
+
+```
+
+## Future Paths
+
+1. Could local news decline be linked to increased role of national level campaign features in vote choice (e.g. leader impressions)
+2. Evaluate link with \emph{acclamations}.
+3. Reconsider excluding \emph{decreases}. 
+3. Utilize continuous nature of newspaper closures.
+3. Evaluate link with status as news desserts (i.e. communities without newspapers).
+
+
+## Concluding questions
+1. How surprised are people at a null finding?
+2. What is the normative significance of a null effect in the current climate in Canada?
+3. What is the theoretical significance of a true null effect from this case.?
+
+
+## References

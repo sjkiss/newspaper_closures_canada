@@ -7,16 +7,11 @@ bibliography: /Users/skiss/OneDrive - Wilfrid Laurier University/projects_folder
 # Introduction
 
 
-
-## Motivation
-
-
-
 # Theory and Literature Review
 
 ## Evidence from other countries
 
-There is significant evidence from other jurisdictions that access to local news is related to measures of democratic participation. For example, Gentzkow et al. [-@gentzkowEffectNewspaperEntry2011] find evidence from US newspapers newspaper entrances (and exits) in a county are related (positively) to presidential and congressional turnout. Similarly, Schuhlhofer-wohl and Garrido found that the closure of the Cincinatti *Post* reduced voter turnout, the number of candidates, campaign spending and increased the incumbency advantage in those counties where the *Post* had its highest coverage [-@schulhofer-wohlNewspapersMatterShortrun2013]. Beyond participation, Darr et al. [-@darrNewspaperClosuresPolarize2018] find that newspaper closures are linked with increasingly polarized voting in presidential elections, suggesting that local newspapers provide citizens with information about the relationship between national level candidates and local conditions. In the absence of that information, citizens are left relying on national level media and partisan cues, both of which contribute to greater rates of polarized or party-line voting. 
+There is evidence from other jurisdictions that access to local news is related to measures of democratic participation. For example, Gentzkow et al. [-@gentzkowEffectNewspaperEntry2011] find evidence from US newspapers newspaper entrances (and exits) in a county are related (positively) to presidential and congressional turnout. Similarly, Schuhlhofer-wohl and Garrido found that the closure of the Cincinatti *Post* reduced voter turnout, the number of candidates, campaign spending and increased the incumbency advantage in those counties where the *Post* had its highest coverage [-@schulhofer-wohlNewspapersMatterShortrun2013]. Beyond participation, Darr et al. [-@darrNewspaperClosuresPolarize2018] find that newspaper closures are linked with increasingly polarized voting in presidential elections, suggesting that local newspapers provide citizens with information about the relationship between national level candidates and local conditions. In the absence of that information, citizens are left relying on national level media and partisan cues, both of which contribute to greater rates of polarized or party-line voting. 
 
 There are two primary theoretical mechanisms through which newspapers might influnce participation. The first is information and the second is social capital. The first is widely seen as essential for citizens to make the decisions to participate. On a brutal level, it is hard to expect citizens to choose to participate in an election when they are not aware that one is happening. At a deeper level, the dissemination of information may make . Moreover, newspapers may facilitate information in an indirect way because they may lower the bar for entry for non-incumbent challengers. Those challengers may make it more rational for voters to participate simply because there is a greater deal at stake. Moreover, challengers may be able to mobilize more voters on their own. However, in the absence of an independent media, challengers may shy away from competing because 
 
@@ -28,7 +23,7 @@ The availability of information through newspapers may play a complicated role i
 
 In the realm of political competition, that the competitive nature of local elections had a significant effect. The number of mayoral candidates while the previous mayoral election's margin of victory had a much smaller effect. 
 
-
+There is one study in 
 
 
 
@@ -36,13 +31,16 @@ In the realm of political competition, that the competitive nature of local elec
 
 To test the hypotheses generated above, we gathered data on newspaper closures from the Loca News Project [-@LocalNewsResearch2012] at Ryerson University. [^1]  This project has collected information on Canadian newspaper closures and changes in newspaper services (e.g. reductions in publication frequency or mergers) since 2008. The database of newspaper service changes was built through crowd-sourced participation to document and monitoring of news and social media discussion of local newspaper changes. To increase validity, its findings are periodically compared with information held by Newspapers Canada, the lobby group that represents the interests of Canadian interests. The database contains information on the primary municipalities served. 
 
-In order to measure political participation in local elections, we obtained election results for each municipality served by newspapers in the. These results were obtained in different ways. In some cases, provinces maintain well-curated databases of municipal election results. In other cases, we contacted municipalities directly. In Canada municipal elections are held every three to four years (depending on the province) and we extended our results as far back to 2001. 
+In order to measure political participation in local elections, we obtained election results for each municipality served by newspapers in the Local News Project. These results were obtained in different ways. In some cases, provinces maintain well-curated databases of municipal election results. In other cases, we contacted municipalities directly. In Canada municipal elections are held every three to four years (depending on the province) and we extended our results as far back to 2001. These newspapers constitute the treatment group.
 
-In order to test causal hypotheses about the impact of newspaper closures on municipal elections, it was necessary to add election results from municipalities where no newspaper closures were observed. To do this, we supplemented municipalities from the local News Project with a dataset of election results from the 100 largest Canadian municipalities that formed the basis of Breux et al. [-@breuxTurnoutLocalElections2017].
+In order to test causal hypotheses about the impact of newspaper closures on municipal elections, it was necessary to add election results from municipalities where no newspaper closures were observed, i.e. a control group. To do this, we supplemented municipalities from the local News Project with a dataset of election results from the 100 largest Canadian municipalities that formed the basis of Breux et al. [-@breuxTurnoutLocalElections2017].
 
 This left us with a data-set of 116 municipalities, each with varying numbers of electoral results. 
 
 [^1]: [https://localnewsresearchproject.ca/](https://localnewsresearchproject.ca/]
+
+# Method 
+
 
 # Results
 

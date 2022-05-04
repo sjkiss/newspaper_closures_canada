@@ -1,0 +1,365 @@
+---
+title: "Newspaper Closures are not linked to measures of local democratic participation in Canada"
+subtitle: "Working Paper. Do not cite without the permission of the author."
+author: "Simon Kiss ^[Laurier Institute for the Study of Public Opinion and Policy, Wilfrid Laurier University, skiss@wlu.ca]"
+date: "28/02/2022"
+output:
+  bookdown::pdf_document2: 
+    toc: false
+bibliography: /Users/skiss/OneDrive - Wilfrid Laurier University/projects_folder/News_deserts/newspapers.bib
+geometry: margin=4cm
+abstract: "This paper examines municipal election results from 116 Canadian municipalities testing whether or not newspaper closures are linked to reductions in three measures of municipal electoral participation: the mayoral margin of victory, the turnout and the number of candidates. A two-way fixed effects model fails to find evidence that measures of participation are lower after newspapers are closed in a municipality. The paper concludes with possible explanations for the null results here."
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache=F, message=F, warning=F, echo=F, fig.width=4, fig.height=2, fig.align="center", error=T)
+library(knitr) 
+library(here)
+library(tidyverse)
+library(skimr)
+library(kableExtra)
+```
+```{r data-import, echo=F, include=F, cache=T}
+source("R_Scripts/3_analysis.r")
+
+
+```
+
+```{r theme-set}
+theme_set(theme_minimal())
+```
+
+
+
+
+
+\newpage
+# Introduction
+
+Like many countries, Canadian media outlets, particularly newspapers, are under severe financial pressure. In 1950 there were 102 newspapers sold per 100 households in Canada. By 2015, that had falled to 18. Today, few than 20\% of Canadian households pay for a newspaper [@publicpolicyforumShatteredMirrorNews2017, 16]. One of the key problems for the newspaper industry has been the decline in classified revenue. Described as the "bedrock" of modern journalism by Marshall McLuhan, classified revenues reached a high of \$875 million in 2005, but by 2015, that had dropped to \$119 million [@publicpolicyforumShatteredMirrorNews2017, 17]. 
+
+It is not hard to understand why this might be a concern for the quality of democratic life. As a result, the news industry has marshaled these concerns to push for policy changes to support Canadian journalism. In particular, in 2018, the federal government announced a plan to support non-profit and for-profit journalism with C\$600 million over five years. However despite this response, no one has actually documented whether or not there are links between newspaper closures in Canadian municipalities and measures of democratic participation. 
+
+There is a great deal at stake here. On the one hand, in the absence of newspapers covering local politics there is the potential for increased waste and inefficiency. In 1998, municipalities spent 4.7% of Canada's GDP [@mcmillanFinancialRelationshipsRegional2004]. Gao and Lee [-@gaoFinancingDiesDarkness2020a] have found that when newspapers close, local municipalities' borrowing costs increase. 
+
+On the other hand, the selected policy response to the problem generates some problems in its own regard. Specifically, having taxpayers support private sector, for-profit news production may undermine news media's claims to independence, undermining their trustworthiness. We can see this happening already in some ways. One digital newspaper -- Blacklock's -- is currently marketing itself as one of the few remaining media outlets in the parliamentary press gallery that did not accept any taxpayer support in the program mentioned above. The combination of its moderately conservative editorial position with its opposition to a policy introduced by a federal Liberal government meant to support its larger corporate rivals is generating a polarizing discourse online. Writ large, it is not overly hard to imagine how this path could develop and finish  with the kind of weakened trust in journalism that one sees in the United States [@laddWhyAmericansHate2012]. 
+
+This paper investigates whether or not newspaper closures in Canada are linked to any of three measures of political participation in Canadian municipal elections.  It finds that there are no strong and consistent evidence that closures are related to declines in municipal electoral participation. 
+
+# Theory and Literature Review
+
+## Evidence from other countries
+
+There is significant evidence from other jurisdictions that access to local news is related to measures of democratic participation. For example, Gentzkow et al. [-@gentzkowEffectNewspaperEntry2011] find evidence from US newspapers newspaper entrances (and exits) in a county are related (positively) to presidential and congressional turnout. Similarly, Schuhlhofer-wohl and Garrido found that the closure of the Cincinatti *Post* reduced voter turnout, the number of candidates, campaign spending and increased the incumbency advantage in those counties where the *Post* had its highest coverage [-@schulhofer-wohlNewspapersMatterShortrun2013]. Beyond participation, Darr et al. [-@darrNewspaperClosuresPolarize2018] find that newspaper closures are linked with increasingly polarized voting in presidential elections, suggesting that local newspapers provide citizens with information about the relationship between national level candidates and local conditions. In the absence of that information, citizens are left relying on national level media and partisan cues, both of which contribute to greater rates of polarized or party-line voting. 
+
+There are two primary theoretical mechanisms through which newspapers might influence participation. The first is information and the second is social capital. The first is widely seen as essential for citizens to make the decisions to participate. On a brutal level, it is hard to expect citizens to choose to participate in an election when they are not aware that one is happening. At a deeper level, the dissemination of information may improve the quality of votes. Using data from the UK Andersen found [-@andersenNewspapersEnlightenPreferences2003] that newspaper readers demonstrated more a tighter link between their ideology and their vote choice than did non-newspaper readers. Moreover, newspapers may facilitate information in an indirect way because they may lower the bar for entry for non-incumbent challengers. Those challengers may make it more rational for voters to participate simply because there is a greater deal at stake. Moreover, challengers may be able to mobilize more voters on their own. However, in the absence of an independent media, challengers may shy away from competing because 
+
+Despite the public policy attention directed to the viability of local media scholars have not tested the relationship between availability of local newspapers and municipal turnout. Breux et al. [-@breuxTurnoutLocalElections2017]  remains the most thorough current examination of the determinants of municipal electoral participation in Canada. That study compared the relative influence of the socio-spatial context of municipalities, the institutional design of elections and the competitiveness of elections. Their results suggest that some elements of each of these have an impact on turnout. Most germane to this study, a surprising finding emerged that voter turnout increased along with the population size while it decreased (slightly) with population growth and decreased significantly with population density. 
+
+The availability of information through newspapers may play a complicated role interacting with these variables. The finding that growing municipalities and lower density municipalities ahve lower turnout is largely explained by lower social capital and lower levels of information about local politics. As people move to a new locale, they may feel less commitment to its affairs and may require more time to learn about politics. Here, the presence or absence of newspapers may simply strengthen existing relationships with turnout. On the one hand, newspaper closures may in fact be most likely to close in smaller centers with less information on local politics available through other sources. Newspaper closures may be an explanation for lower turnout in smaller centres. 
+
+In the realm of political competition, that the competitive nature of local elections had a significant effect. The number of mayoral candidates while the mayoral election margin of victory had a much smaller effect. 
+
+
+# Data Collection
+
+To test the hypotheses generated above, we gathered data on newspaper closures from the Local News Project [-@LocalNewsResearch2012] at Ryerson University. [^1]  This project has collected information on Canadian media outlet changes (e.g. reductions in publication frequency, mergers and new outlets) since 2008. The database was built through a combination of crowd-sourced participation and active expert monitoring to document changes in local media markets in Canada. To increase validity, its findings are periodically compared with information held by Newspapers Canada, the lobby group that represents the interests of Canadian interests. Helpfully, in addition to containing information on the date of media outlet transition and the type of media outlet involved, it also contains information on the primary municipalities served by the media outlet. The idea here is to use this database as a measure of local news volume available to citizens in any given municipality at any given time. 
+
+This generated some challenges in classifying changes in the supply of local news volume. Some of the challenges, and our responses, are as follows. First, the dataset includes information on digital and broadcast media, as well as newspapers. This complicates the measure somewhat because it is extremely difficult to link online and broadcast outlets with the electoral patterns in a particular municipality. Two examples would be the the addition by the provincial television network TVO to add regional hub reporters to address more local concerns. This addition in news supply, however, is hard to tie directly to a municipality. 
+
+A second challenge was to clearly link media outlets to municipal electoral boundaries. This was easiest for newspapers, rather than broadcast and online outlets which was a contributing factor to the decision to restrict this analysis to newspaper closures. However, even there, linking newspapers to municipal election results can be challenging. In some cases media markets and municipal jurisdictions do not always line up. For example, the Toronto Star publishes throughout the Greater Toronto Area, which encompasses a wide range of municipalities. More challenging is to address the issue of newspapers with a narrow municipal focus closing when their market is part of a broader regional municipality. For example, the Lindsay Post was a municipal weekly newspaper in Lindsay, Ontario, which is a city that is one part of the larger City of Kawartha Lakes.  Similarly, the Fort McMurray Connect was a community newspaper that was part of the broader municipality of Wood Buffalo. In the end, we coded a municipality as experiencing a newspaper closure if we could identify a newspaper closure within its municipal boundaries in the time frame under consideration, even if that municipality served by that newspaper was only part of the larger municipality. The argument here is that, ultimately, there is a reduction in the overall news supply. Again, this sets up a potentially conservative measure against any effects. When a newspaper closes in one *part* of a wider municipality, there may be effects on democratic participation in the area served by that newspaper that would be not noticeable in the other parts of the wider municipality.
+
+A third challenge is that the dataset includes media transition \emph{additions} and \emph{increases in services}, which are almost all digital and broadcast outlets, as well as \emph{reductions}, which are nearly all newspapers. Thus, if we restrict the analysis to newspaper closures (partially because they are easier to link directly to a municipality), this may underestimate the way in which new forms of media can offset the provision of local news through other media.  However, Tables \@ref(tab:table1) and \@ref(tab:table2) shows the distribution of transition types, whether they were coded as a closure or not and the medium.  The most important pattern to to note is that, first, the bulk of the dataset documented \emph{reductions} in media supply as opposed to any increases or ambiguous changes in media supply. There were 450 explicit closures and 141 new media outlets and 20 increases in services. The rest of media transitions that were not coded as a newspaper closure were ambiguous media transitions such as a shift to online news production or a decrease in service (with no details to the magnitude of the decrease.)
+
+
+```{r table1}
+
+
+library(janitor)
+library(stringr)
+local_news %>% 
+  mutate(Media=case_when(
+    str_detect(Media.Type, "paper") ~ "Newspaper",
+        str_detect(Media.Type, "radio") ~ "Broadcast",
+        str_detect(Media.Type, "TV") ~ "Broadcast",
+      str_detect(Media.Type, "online") ~ "Online",
+  )) %>% 
+  mutate(Closure=case_when(
+    Transition.Type=="closed"~"Closure",
+        Transition.Type=="new"~"No Closure",
+        Transition.Type=="closed due to merger"~"Closure",
+        Transition.Type=="decrease in service"~"No Closure",
+        Transition.Type=="new outlet produced by merger"~"No Closure",
+            Transition.Type=="shifted to online"~"No Closure",
+    Transition.Type=="increase in service"~"No Closure",
+    Transition.Type=="daily becomes a community paper"~"No Closure",
+    Transition.Type=="daily (free) becomes a community paper"~"No Closure",
+  )) %>% 
+  mutate(Transition.Type=str_to_sentence(Transition.Type))->local_news
+tabyl(local_news, Transition.Type,Closure ) %>% 
+ # adorn_totals(c("col")) %>% 
+  adorn_percentages(., "all") %>% 
+  adorn_pct_formatting() %>% 
+  adorn_ns() %>% 
+ # arrange(desc(Closure), desc(n)) %>% 
+  clean_names(., case="title") %>% 
+  kable(.,  caption="Local media transition types in the Local News Project original dataset")
+
+
+```
+
+If we breakdown the coded closures by type of medium, we see that explicit newspaper closures make up almost a majority of the transition types. The takeaway here is that although our measure of reductions in the volume of local news supply do not take into account potential \emph{increases} in local news supply it is not unreasonable to do so. It biases the analysis \emph{against} finding an effect because there is the potential that any weak effects of local newspaper closures on local measures of political participation may be drowned out by the slower pace of increased and new forms of media production in online and broadcast media. 
+
+```{r table-closures-2}
+tabyl(local_news, Closure, Media) %>% 
+  adorn_percentages(c("all")) %>% 
+  adorn_pct_formatting() %>% 
+  adorn_ns() %>% 
+  kable(., caption="Local media closures by type of medium in the original dataset.")
+
+```
+
+
+
+A fourth problem was the problem of truly marginal publications being included in the dataset. Media outlets were not weighted by circulation or reputation. An example would be something like the Kitchener-Waterloo Review, a supplementary weekly newspaper published by the local newspaper. The dataset includes it as a closure even though it lasted only for a year. Similarly the dataset included the Calgary Rushhour, a free daily introduced by the local larger paper survived only a year. Recording these transitions as a closure would lend undue weight to it as a source of local information vis-a-vis the previous election results as it only existed for a year. There is seemingly no clear rule here. We tried to include any print newspaper closures that would plausibly reduce the overall level of information compared to the previous election.
+
+We then obtained election results for each municipality served by newspapers which closed as identified in the Local News Project. These results were obtained in different ways. In some cases, provinces maintain well-curated databases of municipal election results. In other cases, we contacted municipalities directly. In Canada municipal elections are held every three to four years (depending on the province). We extended our results as far back to 2001. These newspapers constitute the treatment group.
+
+In order to test causal hypotheses about the impact of newspaper closures on municipal elections, it was necessary to add election results from municipalities where no newspaper closures were observed, i.e. a control group. To do this, we supplemented municipalities from the local News Project with a dataset of election results from the 100 largest Canadian municipalities that formed the basis of the Breux et al. [-@breuxTurnoutLocalElections2017].
+
+This left us with a data-set of `r length(unique(elections$municipality))` municipalities, each with varying counts of electoral results. The distribution of elections per  municipality is as follows: 
+```{r elections-year-table}
+library(gt)
+elections %>% 
+  group_by(municipality) %>% 
+  summarize(n=n()) %>% 
+  group_by(as.factor(n)) %>% 
+  summarize(n=n()) %>% 
+  rename("Elections"=1, "Cities"=2) ->elections_df
+elections_df %>% 
+  kable(., caption="Distribution of number of elections and municipalities.")
+
+```
+
+We coded newspaper closures as follows. Each municipality-year was assigned value of 0 and when we identified a newspaper closure, that was set to `-1` in the \emph{first and all following election years} to be -1. In the event that a second newspaper was observed to have closed in that municipality, we set the next election year to be -2, and so on. This does create the possibility of a continuous variable that measures reductions in the local supply of newspapers available to citizens, however, we refrained from utilizing this variable in this way because of the difficulties inherent in treating all newspapers  and newspaper closures with the same weight.  Instead, we converted this to two binary variables for the purposes of our analysis: one variable was set to be 1 for all elections following a newspaper closure of any sort, and a second binary variable was set to one \emph{only} in the first year of a newspaper closure. This allowed us to model potential short- and long-term effects of newspaper closures. 
+
+Table \@ref(tab:show-first-10) shows the first 15 rows of the dataset: 
+
+```{r show-first-10}
+library(lubridate)
+elections$Year<-ymd(as.character(elections$year), truncated=2L)
+
+elections %>% 
+  select(Year, municipality, Closures=status, first_closure, treatment, turnout, n_candidates=`number of candidates`, margin=margin_percent) %>%
+slice(1:15) %>% kable(., caption="First 15 rows of the dataset and key variables") %>% kable_styling(latex_options="scale_down")
+
+```
+
+
+
+Table \@ref(tab:show-descriptives) shows descriptive statistics for three variables used in the analysis: local municipal turnout, number of candidates and the mayoral margin of victory. The reader will note from the table reporting information on numeric variables (turnout, margin and number of candidates) that there are varying rates of missing data. Not all of these municipalities have complete results for the three independent variables.  Some provinces establish central repositories of municipal election results, while others leave this task to municipalities themselves, who have varying capacities to produce historic election results. 
+
+```{r show-descriptives, echo=F, eval=T, results="asis"}
+library(modelsummary)
+missings<-function(x) {
+sum(is.na(x))
+}
+
+elections %>% 
+  group_by(municipality) %>% 
+  summarize(N=n()) %>% 
+  summarize(Average=mean(N))->n_elections
+elections %>%  
+  select(Year=year, Margin=margin_percent, Turnout=turnout, n_candidates=`number of candidates`) %>% 
+datasummary(Margin+n_candidates+Turnout~ N+Mean+SD+missings, data=., output="kableExtra", col.names=c("Test", "Mean", "SD","Missing Values"), caption="Descriptive statistics for key numeric variables. \\label{tab:show-descriptives}") 
+
+```
+
+[^1]: https://localnewsresearchproject.ca/
+
+To aid interpretation we also present the distribution and the inter-correlation of the key dependent variables in Figures \@ref(fig:plot1) and \@ref(fig:scatterplot-matrix).
+
+```{r plot1, eval=T, fig.cap="Distribution of dependent variables."}
+elections%>% 
+    rename(Closures=status, Turnout=turnout, n_candidates=`number of candidates`, margin=margin_percent) ->elections
+elections %>%
+  pivot_longer(cols=c(Turnout, n_candidates, margin)) %>%
+  ggplot(., aes(x=value))+geom_histogram()+facet_grid(~name, scales="free_x")
+```
+
+```{r scatterplot-matrix, fig.width=4, fig.height=4, fig.cap="Correlation of dependent variables"}
+#install.packages('GGally')
+library(GGally)
+
+ggpairs(elections, columns=c(10,11,16), lower = list(continuous = wrap("smooth", color="lightgrey")), diag=list(continuous="blankDiag"))
+
+```
+
+There are two challenges visible in the dataset. First, two of the measures - number of candidates and the margin of victory are both skewed and exhibit significant outliers. We identify these cases in the following by showing those year-municipality rows where the number of candidates or the margin of victory was greater than the average plus three standard deviations for each measure. Those year-municipality rows are in Table \@ref(tab:examine-outliers).
+
+```{r examine-outliers}
+elections %>% 
+  filter(n_candidates> mean(elections$n_candidates, na.rm=T)+(3*sd(elections$n_candidates, na.rm=T)) | margin> mean(elections$margin, na.rm=T)+(3*sd(elections$margin, na.rm=T)) ) %>% 
+  select(municipality, year, margin, n_candidates, Turnout, Closures) %>% 
+  kable(., caption="Outlier cases in the original data-set")
+
+elections %>% 
+  filter(n_candidates< mean(elections$`Number of Candidates`, na.rm=T)+(3*sd(elections$n_candidates, na.rm=T)) | margin < mean(elections$margin, na.rm=T)+(3*sd(elections$margin, na.rm=T)) )->elections2
+```
+
+Here, it is apparent that the extremely large cities of Toronto, Ottawa and Vancouver stand out as a significant outlier in terms of the number of candidates that they present and both Toronto and Vancouver experienced newspaper closures at some point in the dataset under consideration. Concerns about a distorting effect of population size may also exist based on the fact that the sampling strategy whereby municipalities in the control group wree selected from a dataset for which the criterion for inclusion was population size. That is to say, Breux et al. examined determinants of turnout in Canada's 100 largest cities. Their analysis also found that population size was positively correlated with turnout.  Thus, it is possible that there is a confounding variable here, namely, that newspapers are closing in smaller centers, which also have lower turnout. However, after comparing the average population size of those municipalities which have experienced a newspaper closure with those have not, and examined the distribution of population sizes, it does not appear that this is the case. Table \@ref(tab:population-averages) shows the population of treated and untreated cases and the treated cases are much larger than the untreated cases. 
+
+```{r population-averages}
+
+elections %>% 
+  group_by(treat_group) %>% 
+  summarize(Average_population=mean(Population, na.rm=T)) %>% 
+  as_factor() %>% 
+  kable(., col.names=c("Group", "Population"), digits=0, caption="Popluation averages in treated and untreated municipalities")
+
+```
+
+
+```{r distribution-population, fig.cap="Distribution of populations by treatment group."}
+
+elections%>% 
+ggplot(., aes(x=Population))+facet_grid(~as_factor(treat_group))+geom_histogram()
+```
+
+
+In the end, to account for the possibility of this distortion, we through different strategies including modelling the log of the number of candidates and the margin of victory and comparing a subset of the dataset, exluding outlier cases.
+
+# Results
+
+As a first cut, we simply compare the average measures of participation for for the treated and non-treated cases in Tables \@ref(tab:averages1) and Tables \@ref(tab:averages2). We consider both short- and long-term effects of newspapers closures by distinguishing between election results only in the first election following a newspaper closure and election results in all subsequent elections following a newspaper closure. We do this twice: once on the full dataset and once on the reduced dataset, eliminating outliers identified in Section 3. 
+
+
+```{r averages1}
+
+elections %>% 
+select(year, municipality, treatment,first_closure,margin, Turnout, n_candidates) %>% 
+  pivot_longer(3:4, names_to=c("Treatment Type"), values_to=c("Group")) %>% 
+  pivot_longer(3:5, names_to=c("Outcome"), values_to=c("Measure")) %>%
+  group_by(`Treatment Type`, Group, Outcome) %>% 
+  summarize(Average=mean(Measure, na.rm=T)) %>% 
+  pivot_wider(names_from=Outcome,values_from=Average) %>% 
+  ungroup() %>% 
+  mutate(`Treatment Type`=recode(`Treatment Type`, "first_closure"="Only First Post-Closure Election", "treatment"="All Post-Closure Elections")) %>% 
+rename(Group=2, `Margin Percent`=3, `Number of Candidates`=4, `Turnout`=5) %>% 
+  mutate(Group=car::Recode(Group, "0='Untreated' ; 1='Treated'")) %>% 
+  mutate(`Turnout`=`Turnout`/100, `Margin Percent`=`Margin Percent`/100) %>% 
+adorn_pct_formatting(,,,c(3,5)) %>% 
+  kable(., digits=1, caption="Average measures of local electoral participation by treatment group. The first two rows define a treated year as only being the first election following a newspaper closure. This table reports averages from the full data-set.") %>% kable_styling(latex_options="scale_down")
+
+```
+
+```{r averages2, eval=T}
+
+elections2 %>% 
+select(year, municipality, treatment,first_closure,margin, Turnout, n_candidates) %>% 
+  pivot_longer(3:4, names_to=c("Treatment Type"), values_to=c("Group")) %>% 
+  pivot_longer(3:5, names_to=c("Outcome"), values_to=c("Measure")) %>%
+  group_by(`Treatment Type`, Group, Outcome) %>% 
+  summarize(Average=mean(Measure, na.rm=T)) %>% 
+  pivot_wider(names_from=Outcome,values_from=Average) %>% 
+  ungroup() %>% 
+  mutate(`Treatment Type`=recode(`Treatment Type`, "first_closure"="First Post-Closure Election", "treatment"="All Post-Closure Elections")) %>% 
+rename(Group=2, `Margin Percent`=3, `Number of Candidates`=4, `Turnout`=5) %>% 
+  mutate(`Turnout`=`Turnout`/100, `Margin Percent`=`Margin Percent`/100) %>% 
+    mutate(Group=car::Recode(Group, "0='Untreated' ; 1='Treated'")) %>% 
+adorn_pct_formatting(,,, c(3,5)) %>% 
+  kable(., digits=1, caption="Average measures of local electoral participation by treatment group. The first two rows define a treated year as only being the first election following a newspaper closure. This table reports averages from reduced dataset, excluding outliers identified in Section 3.") %>% kable_styling(latex_options="scale_down")
+
+```
+Overall, there is no striking evidence that newspaper closures have any significant impact on these measures of political participation. It is only in the reduced dataset that eliminated outliers where one finds any effect. Specifically, the mayoral margin of victory is larger in the short- and long-term following newspaper closures. A simple t-test for the difference in means for the short-term effect suggests that this is not significant \(t= `r round(t.test(margin~first_closure, data=elections2)$statistic,2)`, p=`r round(t.test(margin~first_closure, data=elections2)$p.value,2)`\).
+
+
+To assess whether or not this is a product of unobserved hetereogeneity in the effects of newspaper closures, I extend this analysis with a two-way fixed effects model. There are several specifications of the model to run through. \footnote{These were fit using \texttt{plm} package in R (Linear Models for Panel Data) [@hsiaoAnalysisPanelData2014].}  Table \@ref(tab:model1) shows two sets of models. In one, newspaper closures are considered to have long-term effects, so a municipality-year is considered treated for all years following a newspaper closure. In the second set, the effects are only considered to be short-term, and so a municipality-year is only considered treated in the election following a newspaper closure. 
+
+Here we see no effects of newspaper closures, short or long term on any of the measures of interest.\footnote{The same models were fit with controls for population, population density and the change in population density, but the conclusions did not change. }
+
+
+
+
+```{r model1, results="markup", echo=F, eval=T}
+library(plm)
+plm_turnout1<-plm(Turnout~treatment, index=c('municipality', 'year'), data=elections, effect="twoways")
+plm_candidates1<-plm(log(n_candidates)~treatment, index=c('municipality', 'year'), data=elections, effect="twoways")
+plm_margin1<-plm(margin~treatment, index=c('municipality', 'year'), data=elections, effect="twoways")
+plm_turnout2<-plm(Turnout~first_closure, index=c('municipality', 'year'), data=elections, effect="twoways")
+
+plm_candidates2<-plm(log(n_candidates)~first_closure, index=c('municipality', 'year'), data=elections, effect="twoways")
+plm_margin2<-plm(log(margin)~first_closure, index=c('municipality', 'year'), data=elections, effect="twoways")
+library(modelsummary)
+model.list1<-list(plm_turnout1, plm_candidates1, plm_margin1, plm_turnout2, plm_candidates2, plm_margin2)
+names(model.list1)<-c("Turnout", "log(Candidates)", "log(Margin)", "Turnout", "log(Candidates)", "log(Margin)")
+
+
+msummary(model.list1, stars=T, vcov = function(x) vcovBK(x, type=c("HC1"), cluster="time"), fmt=2, coef_rename=c("treatment"="Treatment", "first_closure"="Treatment"),  title="Two-Way fixed effects model of newspaper closures on three measures of local participation. \\label{tab:model1}", output='kableExtra', notes="Standard errors are panel-corrected standard errors (Beck and Katz 1995).") %>% 
+  add_header_above(c(" "=1, "Short-Term"=3, "Long-Term"=3)) %>% kable_styling(latex_options="scale_down")
+
+  
+
+
+
+```
+
+
+```{r model2, results="markup", echo=F, eval=F}
+library(plm)
+names(elections)
+plm_turnout2<-plm(Turnout~treatment+log(Population)+Density+delta, index=c('municipality', 'year'), data=elections, effect="twoways")
+plm_candidates2<-plm(log(n_candidates)~treatment+log(Population)+Density+delta, index=c('municipality', 'year'), data=elections, effect="twoways")
+plm_margin2<-plm(margin~treatment+log(Population)+Density+delta, index=c('municipality', 'year'), data=elections, effect="twoways")
+plm_turnout3<-plm(Turnout~first_closure+log(Population)+Density+delta, index=c('municipality', 'year'), data=elections, effect="twoways")
+
+plm_candidates3<-plm(log(n_candidates)~first_closure+log(Population)+Density+delta, index=c('municipality', 'year'), data=elections, effect="twoways")
+plm_margin3<-plm(log(margin)~first_closure+log(Population)+Density+delta, index=c('municipality', 'year'), data=elections, effect="twoways")
+library(modelsummary)
+model.list2<-list(plm_turnout2, plm_candidates2, plm_margin2, plm_turnout3, plm_candidates3, plm_margin3)
+names(model.list2)<-c("Turnout", "Candidates", "Margin", "Turnout", "Candidates", "Margin")
+library(gt)
+
+msummary(model.list2, stars=T, vcov = function(x) vcovBK(x, type=c("HC1"), cluster="time"), fmt=2, coef_rename=c("treatment"="Treatment", "first_closure"="Treatment"), title="Two-Way fixed effects model of newspaper closures on three measures of local electoral participation.\\label{model2} ", output='gt') %>%
+  tab_spanner(label="Long-term", columns=2:4) %>% 
+  tab_spanner(label="Short-term", columns=5:7)
+```
+
+However, because of the finding in Breux et al. (2017) that the number of candidates and the mayoral margin of victory were both linked to turnout, we also test the possibility that newspaper closures might have an impact only on municipal turnout. More specifically, we test an interaction hypothesis that newspaper closures impact turnout primarily by failing to publicize information about the state of competition in the local election. 
+
+```{r model3, eval=T, echo=F}
+
+plm_turnout4<-plm(Turnout~treatment+log(margin)+log(n_candidates)+treatment:log(margin)+treatment:log(n_candidates), index=c('municipality', 'year'), effect="twoways", data=elections)
+plm_turnout5<-plm(Turnout~first_closure+log(margin)+log(n_candidates)+first_closure:log(margin)+first_closure:log(n_candidates), index=c('municipality', 'year'), effect="twoways",data=elections)
+model.list3<-list(plm_turnout4, plm_turnout5)
+names(model.list3)<-c("Short Term", "Long Term")
+coef_vec<-c("treatment"="Treatment","first_closure"="Treatment",
+            "first_closure:log(margin)"="Treatment x log(Margin)",
+             "first_closure:log(n_candidates)"="Treatment x log(n_candidates)",
+            "treatment:log(margin)"="Treatment x log(Margin)",
+            "treatment:log(n_candidates)"="Treatment x log(n_candidates)")
+msummary(model.list3, data=elections, stars=T, vcov = function(x) vcovBK(x, type=c("HC1"), cluster="time"), coef_map=coef_vec, output='kableExtra',  title="Two-Way fixed effects model of interaction between newspaper closers, mayoral margin of victory and number of candidates on turnout.  \\label{tab:model3}") 
+
+```
+
+These results are shown in Table \@ref(tab:model3). Here, there are some differences, although they are not in the hypothesized direction. The positive interaction term associated with the number of candidates by treatment in the short-term case actually suggests that the number of mayoral candidates increases in the wake of newspaper closures while the margin of victory narrowly decreases.
+
+
+# Conclusion
+
+Motivated by concerns about the potential effects of reduced local news for Canadian citizens, this paper has attempted to leverage a publicly available dataset of media outlet closures from the past 15 years to examine whether or not newspaper closures specifically have any observable negative impact on measures of local electoral vitatlity. It did so by identifying 116 instances of newspaper closures in Canadian municipalities. We found municipal election results for these municipalities for turnout, number of candidates for mayor and the mayoral margin of victory. We supplemented these municipal election results with a dataset of municipal election results for Canada's 100 largest municipalities. 
+
+There were no discernible effects of newspaper closures on measures of local participation. There might be three reasons for this. First, it is possible there is a null effect. It is a bit difficult to accept this given the volume of other evidence from other studies. Although it is worth pointing out that there is a distinct difference in historical period covered between this study and Gentzkow et al. [-@gentzkowEffectNewspaperEntry2011]. That study covered the early 20th century, this covers the early 21st century. However, this explanation would still leave  Schulhofer-Wohl and Garrido's [-@schulhofer-wohlNewspapersMatterShortrun2013] finding unaccounted for.
+
+Second, perhaps municipal elections in Canada are influenced more by socio-structural factors and less by information. Municipal elections in Canada are almost exclusively non-partisan affairs. And Breux et al. (2017) found that factors such as population and population density were more significant predictors of turnout than were political variables such as the number of candidates and the mayor's margin of victory. 
+
+Third, perhaps the way in which newspaper closures was operationalized here was overly strict; we did not account for mild decreases in newspaper services (e.g. newspapers dropping a day of publication). Nor did we consider possible the effects of additions to local news volume, so perhaps any real impacts of newspaper closures are actually offset by increased availability of news in other media.
+
+Fourth, it is possible that a two-way fixed effects model is in appropriate here because of existence of multiple cases and the time-varying nature of the treatment. It is possible that a difference-in-difference estimation is more appropriate [@imaiUseTwoWayFixed2021, @goodman-baconDifferenceindifferencesVariationTreatment2021]. 
+
+And lastly, it is possible that the effects of local newspaper closure will not be seen so much in municipal electoral politics but in the area of national level politics. Darr et al. [@darrNewspaperClosuresPolarize2018] have found that newspaper closures are linked to increases in polarized voting patterns. It might be fruitful to test this hpyothesis in the Canadian context. Even though Canadian national elections do not feature multiple votes, there are two levels of campaigning that occur: a national-level campaign led by party leaders and a local level campaign lead by the local candidates for Member of Parliament. Although citizens overwhelmingly rely on the impressions of national leaders and partisanship to cast their vote, district effects are evident [@bodetHowMuchElectoral2022]. Moreover, Canadian parties are in constant tension between the authority of national party leaders and parliamentary caucuses. If local visibility, reputation are resources that Members of Parliament can deploy to resist pressures from national party leaders and local newspapers die, then their may be a consequential shift in the relationships between voters, MPs and national party leaders. Thus, it might be worthwhile to investigate whether the ability to name the local candidate decreases or, conversely, whether the approval of the national party leader has a greater impact on vote choice following a newspaper closure.
+
+
+
+\clearpage
+# References

@@ -1,0 +1,44 @@
+---
+title: "Untitled"
+author: "Simon J. Kiss"
+date: "06/04/2022"
+output: 
+  powerpoint_presentation: 
+    reference_doc: /Users/skiss/laurier_template.pptx
+always_allow_html: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r run-background-script, include=F}
+library(here)
+source(here("R_Scripts/3_analysis.R"))
+
+```
+
+## R Markdown
+
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+library(knitr)
+library(tidyverse)
+summary(cars) %>% 
+  kable()
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
